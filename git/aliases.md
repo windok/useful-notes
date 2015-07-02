@@ -12,6 +12,9 @@ subl ~/.gitconfig
 ```
 add to alias group :
 ```
-arp = !git add --all && git reset --hard && git pull
+	arp = !git add --all && git reset --hard && git pull
+	arpr = !git add --all && git reset --hard && git pull --rebase
+	ac = !git add --all && git commit
+	acm = !git add --all && git commit -m
 ```
 
