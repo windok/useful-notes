@@ -19,5 +19,10 @@
 
 ##API Documentation generators##
 * [php dox](http://phpdox.de/index.html)
-* [sami](https://github.com/FriendsOfPHP/Sami)
-* [api doc](http://apidocjs.com/)
+* [sami](https://github.com/FriendsOfPHP/Sami) - Symphony api doc like generator
+* [api doc](http://apidocjs.com/) - REST API documentator
+ 
+##Continious Integration And Deployment##
+* [jenkins](https://jenkins-ci.org/)
+* [jenkins for php](http://jenkins-php.org/)
+* [apache ant](http://ant.apache.org/) - drive processes described in build files
