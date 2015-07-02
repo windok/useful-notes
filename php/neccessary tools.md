@@ -20,3 +20,4 @@
 ##API Documentation generators##
 * [php dox](http://phpdox.de/index.html)
 * [sami](https://github.com/FriendsOfPHP/Sami)
+* [api doc](http://apidocjs.com/)
