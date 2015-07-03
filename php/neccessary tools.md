@@ -6,6 +6,7 @@
 * [phpunit](https://phpunit.de/index.html)
 * [codeception](http://codeception.com/)
 * [Behat](http://docs.behat.org/en/)
+* [phpspec](http://www.phpspec.net/en/latest/)
 
 ##Quality Assuarence Tools##
 
@@ -18,18 +19,31 @@
 * [php code sniffer](http://pear.php.net/package/PHP_CodeSniffer)
 * [PhpMetrics](http://www.phpmetrics.org/)
 
+##Code Standarts fixers##
+* [PHP Coding Standards Fixer](http://cs.sensiolabs.org/)
+
 ##API Documentation generators##
 * [php dox](http://phpdox.de/index.html)
 * [sami](https://github.com/FriendsOfPHP/Sami) - Symphony api doc like generator
 * [api doc](http://apidocjs.com/) - REST API documentator
 * [phpDocumentor](http://phpdoc.org/)
 * [ApiGen](http://www.apigen.org/)
+* [Swagger](http://swagger.io/)
  
 ##Continious Integration And Deployment##
 * [jenkins](https://jenkins-ci.org/)
 * [jenkins for php](http://jenkins-php.org/)
 * [apache ant](http://ant.apache.org/) - drive processes described in build files
+* [phpci](https://www.phptesting.org/)
+* 
 
 ##CLI##
 * [Symphony Console Component](http://www.phpmetrics.org/)
 * [phpDaemon](http://daemon.io/)
+
+##Cache##
+* [memcached](http://memcached.org/)
+* [redis](http://redis.io/)
+
+##Security##
+* [Security Advisories Checker](https://security.sensiolabs.org/)
