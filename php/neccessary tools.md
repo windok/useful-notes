@@ -7,6 +7,7 @@
 * [codeception](http://codeception.com/)
 * [Behat](http://docs.behat.org/en/)
 * [phpspec](http://www.phpspec.net/en/latest/)
+* [vfsStream](http://vfs.bovigo.org/)
 
 ##Quality Assuarence Tools##
 
@@ -47,3 +48,9 @@
 
 ##Security##
 * [Security Advisories Checker](https://security.sensiolabs.org/)
+
+##Profilers##
+* [xdebug](http://xdebug.org/)
+* [xhprof](http://www.php.net/manual/en/intro.xhprof.php)
+* [xhprof gui](http://xhprof.io/)
+
