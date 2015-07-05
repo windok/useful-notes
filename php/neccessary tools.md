@@ -22,6 +22,8 @@
 
 ##Code Standarts fixers##
 * [PHP Coding Standards Fixer](http://cs.sensiolabs.org/)
+* [PHP Code Fixer from Badoo](https://github.com/badoo/phpcf/)
+* [PHP Beautifier](http://pear.php.net/package/PHP_Beautifier)
 
 ##API Documentation generators##
 * [php dox](http://phpdox.de/index.html)
@@ -36,7 +38,7 @@
 * [jenkins for php](http://jenkins-php.org/)
 * [apache ant](http://ant.apache.org/) - drive processes described in build files
 * [phpci](https://www.phptesting.org/)
-* 
+* [TeamCity](https://www.jetbrains.com/teamcity/)
 
 ##CLI##
 * [Symphony Console Component](http://www.phpmetrics.org/)
@@ -53,4 +55,14 @@
 * [xdebug](http://xdebug.org/)
 * [xhprof](http://www.php.net/manual/en/intro.xhprof.php)
 * [xhprof gui](http://xhprof.io/)
+* [blackfire](https://blackfire.io)
+
+##Template Engines##
+* [Twig](http://twig.sensiolabs.org/)
+
+##Frameworks##
+* [Phalcon]()
+* [Symphony]()
+* [Silex](http://silex.sensiolabs.org/)
+
 
