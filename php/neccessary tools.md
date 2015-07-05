@@ -39,6 +39,7 @@
 * [apache ant](http://ant.apache.org/) - drive processes described in build files
 * [phpci](https://www.phptesting.org/)
 * [TeamCity](https://www.jetbrains.com/teamcity/)
+* [Capistrano](http://capistranorb.com/)
 
 ##CLI##
 * [Symphony Console Component](http://www.phpmetrics.org/)
