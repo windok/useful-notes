@@ -54,6 +54,3 @@ sudo mv phpdox.phar /usr/local/bin/phpdox
 ```
 pear install PHP_CodeSniffer-2.3.3
 ```
-
-Another tools:
-* [Behat](http://docs.behat.org/en/)
