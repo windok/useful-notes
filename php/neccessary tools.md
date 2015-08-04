@@ -35,11 +35,12 @@
  
 ##Continious Integration And Deployment##
 * [jenkins](https://jenkins-ci.org/)
-* [jenkins for php](http://jenkins-php.org/)
-* [apache ant](http://ant.apache.org/) - drive processes described in build files
 * [phpci](https://www.phptesting.org/)
 * [TeamCity](https://www.jetbrains.com/teamcity/)
 * [Capistrano](http://capistranorb.com/)
+* [jenkins for php](http://jenkins-php.org/)
+* [apache ant](http://ant.apache.org/) - drive processes described in build files
+* [phing](https://www.phing.info/) -  PHP project build system
 
 ##CLI##
 * [Symphony Console Component](http://symfony.com/doc/current/components/console/introduction.html)
