@@ -42,7 +42,7 @@
 * [Capistrano](http://capistranorb.com/)
 
 ##CLI##
-* [Symphony Console Component](http://www.phpmetrics.org/)
+* [Symphony Console Component](http://symfony.com/doc/current/components/console/introduction.html)
 * [phpDaemon](http://daemon.io/)
 
 ##Cache##
@@ -51,6 +51,7 @@
 
 ##Security##
 * [Security Advisories Checker](https://security.sensiolabs.org/)
+* [OAuth](http://php.net/manual/en/book.oauth.php)
 
 ##Profilers##
 * [xdebug](http://xdebug.org/)
@@ -62,8 +63,18 @@
 * [Twig](http://twig.sensiolabs.org/)
 
 ##Frameworks##
-* [Phalcon]()
-* [Symphony]()
+* [Phalcon](https://phalconphp.com)
+* [Symphony](https://symfony.com/)
 * [Silex](http://silex.sensiolabs.org/)
+
+##HTTP and Browser operations
+* [Guzzle](http://guzzle.readthedocs.org/en/latest/) - PHP HTTP client
+* [Selenium](http://www.seleniumhq.org/) - Browser automation
+* [Mink](http://mink.behat.org/en/latest/) -  Browser controller/emulator for web applications
+
+##Enviroments
+* [Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+* [VMware](https://www.vmware.com)
 
 
