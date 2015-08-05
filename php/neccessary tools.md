@@ -68,6 +68,7 @@
 * [Phalcon](https://phalconphp.com)
 * [Symphony](https://symfony.com/)
 * [Silex](http://silex.sensiolabs.org/)
+* [CodeIgniter](http://www.codeigniter.com/)
 
 ##HTTP and Browser operations
 * [Guzzle](http://guzzle.readthedocs.org/en/latest/) - PHP HTTP client
