@@ -62,6 +62,7 @@
 
 ##Template Engines##
 * [Twig](http://twig.sensiolabs.org/)
+* [Plates](http://platesphp.com/)
 
 ##Frameworks##
 * [Phalcon](https://phalconphp.com)
