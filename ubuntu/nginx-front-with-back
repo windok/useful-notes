@@ -1,0 +1,29 @@
+server {
+    listen      80;
+    server_name local.*********;
+    set         $root_path '/home/ugin/Projects/********/public';
+    root        $root_path;
+
+    access_log  /var/log/nginx/local.***********-access.log;
+    error_log   /var/log/nginx/local.***********-error.log error;
+
+    index index.php index.html index.htm;
+
+    try_files $uri $uri/ @rewrite;
+
+    location @rewrite {
+        rewrite ^/(.*)$ /index.html;
+    }
+
+    location /api/ {
+        rewrite ^/api/(.*)$ /../api/index.php?_url=/$1;
+    }
+
+    location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
+        root $root_path;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
