@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="compass-develop-delivery">
+
+    <property name="host" value="***********"/>
+    <property name="user" value="***********"/>
+    <property name="password" value="***********"/>
+    <property name="configDir" value="**************"/>
+
+    <target name="to-jenkins">
+        <exec executable="zip" failonerror="true">
+            <arg line="-r deploy.zip developConfigs productionConfigs testConfigs"/>
+        </exec>
+
+        <sshexec host="${host}" username="${user}" password="${password}" trust="true" command="rm -rf ${configDir}"/>
+        <sshexec host="${host}" username="${user}" password="${password}" trust="true" command="mkdir ${configDir}"/>
+
+        <scp file="${basedir}/deploy.zip" todir="${user}@${host}:${configDir}/deploy.zip" password="${password}" trust="true"/>
+
+        <sshexec host="${host}" username="${user}" password="${password}" trust="true" command="unzip -o ${configDir}/deploy.zip -d ${configDir}/"/>
+
+        <antcall target="clean"/>
+    </target>
+
+    <target name="from-jenkins">
+        <sshexec host="${host}" username="${user}" password="${password}" trust="true"
+                 command="cd ${configDir} &amp;&amp; zip -r deploy.zip developConfigs productionConfigs testConfigs"/>
+
+        <scp file="${user}@${host}:${configDir}/deploy.zip" todir="${basedir}/deploy.zip" password="${password}" trust="true"/>
+
+        <exec executable="unzip" failonerror="true">
+            <arg line="-o ${basedir}/deploy.zip -d ${basedir}/"/>
+        </exec>
+
+        <antcall target="clean"/>
+    </target>
+
+    <target name="clean">
+        <delete file="${basedir}/deploy.zip"/>
+        <sshexec host="${host}" username="${user}" password="${password}" trust="true" command="rm ${configDir}/deploy.zip"/>
+    </target>
+
+</project>
