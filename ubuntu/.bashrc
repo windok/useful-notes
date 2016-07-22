@@ -174,17 +174,26 @@ function prompt_command {
         local CUR_DIR=$PWD
         while [[ ! -d "${CUR_DIR}/.git" ]] && [[ ! "${CUR_DIR}" == "/" ]] && [[ ! "${CUR_DIR}" == "~" ]] && [[ ! "${CUR_DIR}" == "" ]]; do CUR_DIR=${CUR_DIR%/*}; done
         if [[ -d "${CUR_DIR}/.git" ]]; then
-            # 'git repo for dotfiles' fix: show git status only in home dir and other git repos
-            if [[ "${CUR_DIR}" != "${HOME}" ]] || [[ "${PWD}" == "${HOME}" ]]; then
-                # get git branch
-                GIT_BRANCH=$($PS1_GIT_BIN symbolic-ref HEAD 2>/dev/null)
-                if [[ ! -z $GIT_BRANCH ]]; then
-                    GIT_BRANCH=${GIT_BRANCH#refs/heads/}
+            local GIT_DIR_SIZE=
+            [[ `du -s ${CUR_DIR}/.git` =~ [0-9]+ ]] && GIT_DIR_SIZE=${BASH_REMATCH[0]}
 
-                    # get git status
-                    local GIT_STATUS=$($PS1_GIT_BIN status --porcelain 2>/dev/null)
-                    [[ -n $GIT_STATUS ]] && GIT_DIRTY=1
+            # do not define if git repo is more 100MB and it takes a lot of time to define branch and status
+            if [[ GIT_DIR_SIZE -le 102400 ]]; then
+                # 'git repo for dotfiles' fix: show git status only in home dir and other git repos
+                if [[ "${CUR_DIR}" != "${HOME}" ]] || [[ "${PWD}" == "${HOME}" ]]; then
+                    # get git branch
+                    GIT_BRANCH=$($PS1_GIT_BIN symbolic-ref HEAD 2>/dev/null)
+                    if [[ ! -z $GIT_BRANCH ]]; then
+                        GIT_BRANCH=${GIT_BRANCH#refs/heads/}
+
+                        # get git status
+                        GIT_STATUS=$($PS1_GIT_BIN status --porcelain 2>/dev/null)
+                        [[ -n $GIT_STATUS ]] && GIT_DIRTY=1
+                    fi
                 fi
+            else
+                GIT_BRANCH='NOT_DEFINED'
+                GIT_DIRTY=2
             fi
         fi
     fi
@@ -214,8 +223,10 @@ function prompt_command {
         if [[ ! -z $GIT_BRANCH ]]; then
             if [[ -z $GIT_DIRTY ]]; then
                 PS1_GIT=" (git: ${bold_on}${color_green}${GIT_BRANCH}${color_off})"
-            else
+            elif [[ $GIT_DIRTY -eq 1 ]]; then
                 PS1_GIT=" (git: ${bold_on}${color_red}${GIT_BRANCH}${color_off})"
+            else
+                PS1_GIT=" (git: ${bold_on}${color_blue}${GIT_BRANCH}${color_off})"
             fi
         fi
 
@@ -226,6 +237,7 @@ function prompt_command {
     # set new color prompt
     PS1="${bold_on}${color_user}${USER}${color_off}@${bold_on}${color_yellow}${HOSTNAME}${color_off}${bold_on}:${color_blue}${PWDNAME}${color_off}${PS1_GIT}${PS1_VENV} ${FILL}\n➜ "
 
+    # mc overload, consider to comment
     echo -en "\033[6n" && read -sdR CURPOS
     [[ ${CURPOS##*;} -gt 1 ]] && echo "${color_error}↵${color_error_off}"
 
