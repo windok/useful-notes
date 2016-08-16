@@ -177,23 +177,23 @@ function prompt_command {
             local GIT_DIR_SIZE=
             [[ `du -s ${CUR_DIR}/.git` =~ [0-9]+ ]] && GIT_DIR_SIZE=${BASH_REMATCH[0]}
 
-            # do not define if git repo is more 100MB and it takes a lot of time to define branch and status
-            if [[ GIT_DIR_SIZE -le 102400 ]]; then
-                # 'git repo for dotfiles' fix: show git status only in home dir and other git repos
-                if [[ "${CUR_DIR}" != "${HOME}" ]] || [[ "${PWD}" == "${HOME}" ]]; then
-                    # get git branch
-                    GIT_BRANCH=$($PS1_GIT_BIN symbolic-ref HEAD 2>/dev/null)
-                    if [[ ! -z $GIT_BRANCH ]]; then
-                        GIT_BRANCH=${GIT_BRANCH#refs/heads/}
+            # 'git repo for dotfiles' fix: show git status only in home dir and other git repos
+            if [[ "${CUR_DIR}" != "${HOME}" ]] || [[ "${PWD}" == "${HOME}" ]]; then
+                # get git branch
+                GIT_BRANCH=$($PS1_GIT_BIN symbolic-ref HEAD 2>/dev/null)
 
+                if [[ ! -z $GIT_BRANCH ]]; then
+                    GIT_BRANCH=${GIT_BRANCH#refs/heads/}
+
+                    # do not define if repo is large and it takes a lot of time to define status
+                    if [[ GIT_DIR_SIZE -le 51200 ]]; then
                         # get git status
                         GIT_STATUS=$($PS1_GIT_BIN status --porcelain 2>/dev/null)
                         [[ -n $GIT_STATUS ]] && GIT_DIRTY=1
+                    else
+                        GIT_DIRTY=2
                     fi
                 fi
-            else
-                GIT_BRANCH='NOT_DEFINED'
-                GIT_DIRTY=2
             fi
         fi
     fi
