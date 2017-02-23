@@ -24,12 +24,47 @@ subl ~/.gitconfig
 add to alias group :
 ```
 	st = status
+	cp = cherry-pick
 	ci = commit
 	co = checkout
 	br = branch
-    	arp = !git add --all && git reset --hard && git pull
-    	arpr = !git add --all && git reset --hard && git pull --rebase
-    	ac = !git add --all && git commit
-    	acm = !git add --all && git commit -m
-    	all = !git add --all
+	arp = !git add --all && git reset --hard && git pull
+    arpr = !git add --all && git reset --hard && git pull --rebase
+    ac = !git add --all && git commit
+    acm = !git add --all && git commit -m
+    all = !git add --all
+    sup = !git submodule update
+    prs = !git pull --rebase && git submodule update
+    rs = !git rebase && git submodule update
 ```
+
+
+
+
+
+
+
+[color]
+	ui = true
+[core]
+	autocrlf = input
+	excludesfile = /home/ykuznets/.gitignore_global
+[push]
+	default = simple
+[user]
+	name = ****
+	email = ****
+[alias]
+    st = status
+    cp = cherry-pick
+    ci = commit
+    co = checkout
+    br = branch
+    arp = !git add --all && git reset --hard && git pull
+    arpr = !git add --all && git reset --hard && git pull --rebase
+    ac = !git add --all && git commit
+    acm = !git add --all && git commit -m
+    all = !git add --all
+    sup = !git submodule update
+    prs = !git pull --rebase && git submodule update
+    rs = !git rebase && git submodule update
