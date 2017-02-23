@@ -43,7 +43,7 @@ add to alias group :
 
 
 
-
+```
 [color]
 	ui = true
 [core]
@@ -68,3 +68,4 @@ add to alias group :
     sup = !git submodule update
     prs = !git pull --rebase && git submodule update
     rs = !git rebase && git submodule update
+```
