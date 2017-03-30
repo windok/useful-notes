@@ -43,4 +43,7 @@ atom ~/.gitconfig
     sup = !git submodule update
     prs = !git pull --rebase && git submodule update
     rs = !git rebase && git submodule update
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
 ```
