@@ -35,15 +35,26 @@ atom ~/.gitconfig
     ci = commit
     co = checkout
     br = branch
-    arp = !git add --all && git reset --hard && git pull
-    arpr = !git add --all && git reset --hard && git pull --rebase
-    ac = !git add --all && git commit
-    acm = !git add --all && git commit -m
+
     all = !git add --all
     sup = !git submodule update
-    prs = !git pull --rebase && git submodule update
-    rs = !git rebase && git submodule update
+
+	ac = !git all && git commit
+	acm = !git all && git commit -m
+
+	prs = !git pull --rebase && git sup
+	rs = !git rebase && git sup
+
+    as = !git all && git stash
+    asp = !git as && git pull
+    asprs = !git as && git prs
+
+    ar = !git all && git reset --hard
+    arp = !git ar && git pull
+    arprs = !git ar && git prs
+
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+
 ```
