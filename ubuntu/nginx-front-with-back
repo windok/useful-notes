@@ -1,29 +1,60 @@
 server {
-    listen      80;
-    server_name local.*********;
-    set         $root_path '/home/ugin/Projects/********/public';
-    root        $root_path;
+    listen 443;
 
-    access_log  /var/log/nginx/local.***********-access.log;
-    error_log   /var/log/nginx/local.***********-error.log error;
+    server_name ******;
 
-    index index.php index.html index.htm;
+    charset UTF-8;
+    server_tokens off;
 
-    try_files $uri $uri/ @rewrite;
+    # ssl configuration goes here
+    ssl_certificate      /etc/nginx/cert/*****.crt;
+    ssl_certificate_key  /etc/nginx/cert/*****.key;
 
-    location @rewrite {
-        rewrite ^/(.*)$ /index.html;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers HIGH:!aNULL:!MD5:+SHA1;
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 1h;
+    ssl_session_cache shared:SSL:16m;
+
+    add_header Strict-Transport-Security "max-age=31536000;";
+
+    proxy_cache one;
+
+    set $project_path /home/ykuznets/sources/******/;
+    root $project_path/www/;
+
+    index index.html index.htm;
+
+    access_log  /var/log/nginx/*****-access.log;
+    error_log   /var/log/nginx/*****-error.log error;
+    #error_log   /var/log/nginx/*****-debug.log debug;
+
+    location / {
+      try_files $uri $uri/ /index.html;
     }
 
-    location /api/ {
-        rewrite ^/api/(.*)$ /../api/index.php?_url=/$1;
+    location ~ ^/api/ {
+        rewrite  ^/api/(.*)$ /index.php/$1$is_args$args;
     }
 
-    location ~* ^/(css|img|js|flv|swf|download)/(.+)$ {
-        root $root_path;
+    location ~ \.php {
+        internal;
+
+        fastcgi_pass  127.0.0.1:9001;
+        fastcgi_index index.php;
+
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+
+        include fastcgi_params;
+
+        fastcgi_param  HTTPS on;
+        fastcgi_param  REQUEST_URI        $fastcgi_path_info;
+        fastcgi_param  PATH_INFO          $fastcgi_path_info;
+        fastcgi_param  PATH_TRANSLATED    $document_root$fastcgi_path_info;
+        fastcgi_param  SCRIPT_FILENAME    $project_path/api/index.php;
     }
 
-    location ~ /\.ht {
-        deny all;
+    location ~ ^/favicon.ico$ {
+       return 204;
     }
 }
