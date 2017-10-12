@@ -39,11 +39,11 @@ atom ~/.gitconfig
     all = !git add --all
     sup = !git submodule update
 
-	ac = !git all && git commit
-	acm = !git all && git commit -m
+    ac = !git all && git commit
+    acm = !git all && git commit -m
 
-	prs = !git pull --rebase && git sup
-	rs = !git rebase && git sup
+    prs = !git pull --rebase && git sup
+    rs = !git rebase && git sup
 
     as = !git all && git stash
     asp = !git as && git pull
@@ -52,6 +52,8 @@ atom ~/.gitconfig
     ar = !git all && git reset --hard
     arp = !git ar && git pull
     arprs = !git ar && git prs
+
+    up = !git as && git prs && git stash apply
 
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
