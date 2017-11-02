@@ -53,7 +53,7 @@ atom ~/.gitconfig
     arp = !git ar && git pull
     arprs = !git ar && git prs
 
-    up = !git as && git prs && git stash apply
+    up = "!sh -c 'if [[ $(git st -s) ]]; then git as && git prs && git stash pop; else git prs && git st; fi'"
 
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
