@@ -24,6 +24,7 @@ atom ~/.gitconfig
 [core]
     autocrlf = input
     excludesfile = /home/ykuznets/.gitignore_global
+    editor = vi
 [push]
     default = simple
 [user]
@@ -53,7 +54,7 @@ atom ~/.gitconfig
     arp = !git ar && git pull
     arprs = !git ar && git prs
 
-    up = "!sh -c 'if [[ $(git st -s) ]]; then git as && git prs && git stash pop; else git prs && git st; fi'"
+    up = "!bash -c 'if [[ $(git st -s) ]]; then git as && git prs && git stash pop; else git prs && git st; fi'"
 
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
